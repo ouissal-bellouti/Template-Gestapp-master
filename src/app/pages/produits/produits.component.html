@@ -1,0 +1,182 @@
+<div class="content" >
+  <div class=" row">
+    <div class=" col-lg-12 col-md-12">
+      <div class=" card card-tasks">
+        <div class=" card-header">
+          <h3 class=" title d-inline">Liste des produits</h3>
+           <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <div *ngIf="isLoadingResults"></div>
+  </div>
+          <div ngbDropdown>
+          <form class="form-inline waves-light" mdbWavesEffect>
+            <div class="md-form mt-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            </div>
+
+
+            <button class=" btn btn-link" type="button"  ngbTooltip="Ajouter" container="body" routerLink="/produit-add" >
+              <i class=" tim-icons icon-simple-add"> </i>
+            </button>
+          </form>
+
+            <div
+              aria-labelledby="dropdownMenuLink"
+              class=" dropdown-menu-right"
+              ngbDropdownMenu
+            >
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class=" card-body" >
+          <div class=" table-full-width table-responsive">
+            <table class=" table">
+              <tbody>
+                <tr>
+                  <td>
+             <img src="assets/img/dell.jpg" style="width: 25%; height: 25%;">
+                  </td>
+                  <td >
+                    <h3> PR001: PC Dell core I5</h3>
+                    <p class="text-muted">
+                        Prix: 4500Dh
+                    </p>
+                  </td>
+                  <td class=" td-actions text-right">
+                    <div>
+                      <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Detail" container="body" routerLink="/produit-detail" >
+                      <i class=" tim-icons icon-components"> </i>
+                    </button>
+                    <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Edit" container="body" routerLink="/produit-edit" >
+                      <i class=" tim-icons icon-pencil"> </i>
+                    </button>
+                    <button class=" btn btn-link" (click)="deleteProduit(produit.Id)" placement="left" ngbTooltip="Delete">
+                      <i class=" tim-icons icon-trash-simple"> </i>
+                    </button>
+
+                  </div>
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <img src="assets/img/dec.jpg" style="width: 25%; height: 25%;">
+                  </td>
+                  <td >
+                    <h3> PR002: Vase noire</h3>
+                    <p class="text-muted">
+                        Prix : 800Dh
+                    </p>
+                  </td>
+                  <td class=" td-actions text-right">
+                    <div>
+                      <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Detail" container="body" routerLink="/produit-detail" >
+                      <i class=" tim-icons icon-components"> </i>
+                    </button>
+                    <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Edit" container="body" routerLink="/produit-edit" >
+                      <i class=" tim-icons icon-pencil"> </i>
+                    </button>
+                    <button class=" btn btn-link" (click)="deleteProduit(produit.Id)" placement="left" ngbTooltip="Delete">
+                      <i class=" tim-icons icon-trash-simple"> </i>
+                    </button>
+
+                  </div>
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <img src="assets/img/sourisf.jpg" style="width: 25%; height: 25%;">
+                  </td>
+                  <td >
+                    <h3> PR003: Souris Gamer</h3>
+                    <p class="text-muted">
+                        Prix : 600Dh
+                    </p>
+                  </td>
+                  <td class=" td-actions text-right">
+                    <div>
+                      <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Detail" container="body" routerLink="/produit-detail" >
+                      <i class=" tim-icons icon-components"> </i>
+                    </button>
+                    <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Edit" container="body" routerLink="/produit-edit" >
+                      <i class=" tim-icons icon-pencil"> </i>
+                    </button>
+                    <button class=" btn btn-link" (click)="deleteProduit(produit.Id)" placement="left" ngbTooltip="Delete">
+                      <i class=" tim-icons icon-trash-simple"> </i>
+                    </button>
+
+                  </div>
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <img src="assets/img/dell.jpg" style="width: 25%; height: 25%;">
+                  </td>
+                  <td >
+                    <h3> PR002 :PC Dell core I5</h3>
+                    <p class="text-muted">
+                        Prix : 4500Dh
+                    </p>
+                  </td>
+                  <td class=" td-actions text-right">
+                    <div>
+                      <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Detail" container="body" routerLink="/produit-detail" >
+                      <i class=" tim-icons icon-components"> </i>
+                    </button>
+                    <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Edit" container="body" routerLink="/produit-edit" >
+                      <i class=" tim-icons icon-pencil"> </i>
+                    </button>
+                    <button class=" btn btn-link" (click)="deleteProduit(produit.Id)" placement="left" ngbTooltip="Delete">
+                      <i class=" tim-icons icon-trash-simple"> </i>
+                    </button>
+
+                  </div>
+
+                  </td>
+                </tr>
+
+                <tr *ngFor="let produit of produits">
+                  <td>
+             <img style="width: 50%; height: 50%;"   [attr.src]="produit.Image"  />
+                  </td>
+                  <td >
+                    <h3></h3>
+                    <p class="text-light">
+                    </p>
+                  </td>
+                  <td class=" td-actions text-right">
+                    <div>
+                      <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Detail" container="body" routerLink="/produit-detail, produit.id" >
+                      <i class=" tim-icons icon-simple-remove"> </i>
+                    </button>
+                    <button class=" btn btn-link" type="button" placement="left" ngbTooltip="Edit" container="body" routerLink="/produit-edit, produit.id" >
+                      <i class=" tim-icons icon-pencil"> </i>
+                    </button>
+                    <button class=" btn btn-link" (click)="deleteProduit(produit.Id)" placement="left" ngbTooltip="Delete">
+                      <i class=" tim-icons icon-trash-simple"> </i>
+                    </button>
+
+
+                  </div>
+
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

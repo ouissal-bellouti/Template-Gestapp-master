@@ -1,0 +1,49 @@
+
+<div class="col-md-12" class="dark">
+  <h1>Client</h1>
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="Id" id="Id">
+    <div class="form-group">
+      <label>Nom </label>
+      <input type="text" class="form-control" formControlName="Nom" id="Nom">
+
+    </div>
+    <div class="form-group">
+      <label>Prenom</label>
+      <input type="text" class="form-control" formControlName="Prenom" id="Prenom">
+
+    </div>
+    <div class="form-group">
+      <label>Email </label>
+      <input type="text" class="form-control" formControlName="Email" id="Email">
+
+    </div>
+    <div class="form-group">
+      <label>Telephone</label>
+      <input type="text" class="form-control" formControlName="Telephone" id="Telephone">
+
+    </div>
+    <div class="form-group">
+      <label>Adresse</label>
+      <input type="text" class="form-control" formControlName="Adresse" id="Adresse">
+
+    </div>
+    <div class="form-group">
+      <label>Ville </label>
+      <input type="text" class="form-control" formControlName="Ville" id="Ville">
+
+    </div>
+    <div class="form-group">
+      <label>CodePostal</label>
+      <input type="text" class="form-control" formControlName="CodePostal" id="CodePostal">
+
+    </div>
+    <div class="form-group">
+
+      <button type="submit" class="btn btn-danger"><i class="fa fa-database"></i> Submit</button>
+      <button type="close" class="btn btn-outline-danger ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+
+
+     </div>
+  </form>
+</div>
