@@ -9,7 +9,6 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 
-import { ErrorInterceptor } from 'src/app/helpers/error.interceptor';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -75,7 +74,6 @@ import {BasicAuthInterceptor} from './helpers/basic-auth.interceptor';
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] },
     { provide: DatePipe, useValue:{} }

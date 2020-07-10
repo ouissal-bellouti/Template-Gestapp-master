@@ -74,7 +74,7 @@ export class AuthLayoutComponent implements OnInit {
         this.authentificationService.installStorage(rem, email);
         this.route.navigate(['dashboard']);
       }, err => {
-        console.log(err); // err 400 bad request
+        console.log(err);
         this.message = err.error;
       });
     }

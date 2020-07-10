@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/pages/user';
 import { AuthentificationService } from 'src/app/services/authentification.service';
+import { RegisterService } from 'src/app/services/register.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -29,7 +31,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private element: ElementRef,
     private router: Router,
     private modalService: NgbModal,
-    private authentificationService: AuthentificationService
+    private authentificationService: AuthentificationService,
+    private service :RegisterService,
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -73,6 +76,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       navbar.classList.remove('bg-white');
     }
   }
+
 
   sidebarOpen() {
     const toggleButton = this.toggleButton;
@@ -199,5 +203,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(){
      window.removeEventListener('resize', this.updateColor);
+  }
+
+  logout() {
+    this.service.LogoutUsers().subscribe(succ => {
+      this.router.navigate(['login']);
+    }, err=> console.log(err))
+
   }
 }

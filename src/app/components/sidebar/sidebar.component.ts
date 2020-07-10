@@ -71,13 +71,6 @@ export const ROUTES: RouteInfo[] = [
     icon: 'icon-bell-55',
     class: ''
   },
-  {
-    path: '/rtl',
-    title: 'RTL Support',
-    rtlTitle: 'ار تي ال',
-    icon: 'icon-world',
-    class: ''
-  }
 ];
 
 @Component({
