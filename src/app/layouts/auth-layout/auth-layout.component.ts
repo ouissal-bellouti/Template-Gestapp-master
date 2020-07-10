@@ -82,9 +82,10 @@ export class AuthLayoutComponent implements OnInit {
 
 
   ValidateModel() {
-    this.logModel.Email = this.loginForm.value.email;
-    this.logModel.Password = this.loginForm.value.password;
-    this.logModel.RememberMe = this.loginForm.value.rememberMe;
+    this.logModel.Email = this.loginForm.value.Email;
+    this.logModel.Password = this.loginForm.value.Password;
+    this.logModel.UserName = this.loginForm.value.UserName
+    this.logModel.RememberMe = this.loginForm.value.RememberMe;
   }
 
 }
