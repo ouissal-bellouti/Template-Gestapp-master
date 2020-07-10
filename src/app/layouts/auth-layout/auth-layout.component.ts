@@ -39,6 +39,9 @@ export class AuthLayoutComponent implements OnInit {
       pass: {
         required: 'Password est obligatoire',
       },
+      username: {
+        required: 'Username est obligatoire',
+      },
     };
 
   ngOnInit() {
@@ -46,12 +49,14 @@ export class AuthLayoutComponent implements OnInit {
 
     this.logModel = {
       Email: '',
+      UserName:'',
       Password: '',
       RememberMe: false
     };
 
     this.loginForm = this.formBuilder.group({
       Email: ['', Validators.required],
+      UserName:['',Validators.required],
       Password: ['', Validators.required],
       RememberMe: false
     });
@@ -65,10 +70,11 @@ export class AuthLayoutComponent implements OnInit {
       this.service.UserLogin(this.logModel).subscribe(success => {
         const rem = !!this.loginForm.value.RememberMe;
         const email = this.loginForm.value.Email;
+        const username = this.loginForm.value.UserName;
         this.authentificationService.installStorage(rem, email);
         this.route.navigate(['dashboard']);
       }, err => {
-        console.log(err);
+        console.log(err); // err 400 bad request
         this.message = err.error;
       });
     }
