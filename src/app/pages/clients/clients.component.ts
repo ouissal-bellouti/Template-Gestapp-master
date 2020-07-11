@@ -62,7 +62,7 @@ export class ClientsComponent implements OnInit {
 
   selectData(item : Client) {
     this.api.choixmenu = 'M';
-    this.api.dataForm = this.fb.group(Object.assign({},item));
+    this.api.clientForm = this.fb.group(Object.assign({},item));
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;

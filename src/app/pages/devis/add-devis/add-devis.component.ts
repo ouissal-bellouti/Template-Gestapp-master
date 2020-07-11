@@ -129,7 +129,6 @@ export class AddDevisComponent implements OnInit {
       }
       else {
         this.f['Nom'].setValue(this.ClientList[ctrl.selectedIndex - 1].nom);
-        this.f['Id'].setValue(this.ClientList[ctrl.selectedIndex - 1].id);
       }
     }
 

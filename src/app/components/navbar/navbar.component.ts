@@ -207,8 +207,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   logout() {
     this.service.LogoutUsers().subscribe(succ => {
+      localStorage.removeItem('email');
+      localStorage.removeItem('username');
+      localStorage.removeItem('expire');
       this.router.navigate(['login']);
     }, err=> console.log(err))
 
+  }
+
+  isUserRegisterd() {
+    const email = !!localStorage.getItem('Email');
+    if(email) {
+      return true;
+    }
+    return false;
   }
 }

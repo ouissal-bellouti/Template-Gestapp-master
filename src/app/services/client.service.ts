@@ -3,40 +3,40 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders,HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Client } from '../pages/client';
-import { environment } from 'src/environments/environment';
 import { FormGroup } from '@angular/forms';
 
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin':'http://localhost:5000'})
+  'Access-Control-Allow-Origin':'http://localhost:58314/Client'},
+  )
 };
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
 
-  private apiUrl ='http://localhost:5000';
+  private apiUrl ='http://localhost:58314/Client';
   choixmenu = 'A';
   listData: Client[];
-  public dataForm : FormGroup;
+  public clientForm : FormGroup;
 
   constructor(private http: HttpClient) { }
 
-  getData(Id: string): Observable<object>{
-    return this.http.get(`${this.apiUrl}/api/Client/${Id}`)
+  GetAsync(Id: string): Observable<Client>{
+    return this.http.get<Client>(`${this.apiUrl}/${Id}`)
   }
-  postData(info) : Observable<object>{
-    return this.http.post(`${this.apiUrl}/api/Client/`,info);
+  postData(info) : Observable<Client>{
+    return this.http.post<Client>(`${this.apiUrl}`,info);
   }
-  putData(Id: string, value:any):  Observable<object>{
-    return this.http.put(`${this.apiUrl}/api/Client//${Id}`,value);
+  putData(Id: string, value:any):  Observable<Client>{
+    return this.http.put<Client>(`${this.apiUrl}/${Id}`,value);
   }
-  deleteData(Id: string): Observable<any>{
-    return this.http.delete(`${this.apiUrl}/api/Client/${Id}`);
+  deleteData(Id: string): Observable<Client>{
+    return this.http.delete<Client>(`${this.apiUrl}/${Id}`);
   }
- getAll():Observable<any> {
-    return this.http.get(`${this.apiUrl}/api/Client/`);
+ getAll():Observable<Client[]> {
+    return this.http.get<Client[]>(`${this.apiUrl}`);
   }
 
 }
