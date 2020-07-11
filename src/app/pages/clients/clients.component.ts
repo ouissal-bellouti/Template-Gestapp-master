@@ -39,11 +39,12 @@ export class ClientsComponent implements OnInit {
       dialogConfig.disableClose = true;
       dialogConfig.width = '50%';
       this.matDialog.open(AddClientComponent, dialogConfig);
+      console.log('addclient');
     }
 
-    removeData(Id: string) {
+    removeData(id) {
       if (window.confirm('Are sure you want to delete this Categorie ?')) {
-      this.api.deleteData(Id)
+      this.api.deleteData(id)
         .subscribe(
           data => {
             console.log(data);

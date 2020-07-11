@@ -5,42 +5,48 @@
     <input type="hidden" formControlName="Id" id="Id">
     <div class="form-group">
       <label>Nom </label>
-      <input type="text" class="form-control" formControlName="Nom" id="Nom">
+      <input type="text" formControlName="nom" class="form-control" id="nom"
+      placeholder="Nom de client" [ngClass]="{'is-invalid' :
+      !this.clientForm.get('nom').valid}">
 
     </div>
     <div class="form-group">
       <label>Prenom</label>
-      <input type="text" class="form-control" formControlName="Prenom" id="Prenom">
+      <input type="text" formControlName="prenom" class="form-control" id="prenom"
+      placeholder="Prenom" [ngClass]="{'is-invalid' :
+      !this.clientForm.get('prenom').valid}">
 
     </div>
     <div class="form-group">
       <label>Email </label>
-      <input type="text" class="form-control" formControlName="Email" id="Email">
-
+      <input type="email" formControlName="email" class="form-control" id="email"
+      placeholder="exemple@gmail.com" [ngClass]="{'is-invalid' :
+      !this.clientForm.get('email').valid}">
     </div>
     <div class="form-group">
       <label>Telephone</label>
-      <input type="text" class="form-control" formControlName="Telephone" id="Telephone">
+      <input type="text" class="form-control" formControlName="telephone" name="telephone">
 
     </div>
     <div class="form-group">
       <label>Adresse</label>
-      <input type="text" class="form-control" formControlName="Adresse" id="Adresse">
-
+      <input type="text" formControlName="adresse" class="form-control" id="adresse"
+       [ngClass]="{'is-invalid' :
+      !this.clientForm.get('adresse').valid}">
     </div>
     <div class="form-group">
       <label>Ville </label>
-      <input type="text" class="form-control" formControlName="Ville" id="Ville">
+      <input type="text" class="form-control" formControlName="ville" id="ville">
 
     </div>
     <div class="form-group">
       <label>CodePostal</label>
-      <input type="text" class="form-control" formControlName="CodePostal" id="CodePostal">
+      <input type="text" class="form-control" formControlName="codePostal" id="codePostal">
 
     </div>
     <div class="form-group">
 
-      <button type="submit" class="btn btn-danger"><i class="fa fa-database"></i> Submit</button>
+      <button type="submit" class="btn btn-danger" (click)="onSubmit(clientForm.value)"><i class="fa fa-database"></i> Submit</button>
       <button type="close" class="btn btn-outline-danger ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
 
 

@@ -23,11 +23,19 @@ export class ClientService {
 
   constructor(private http: HttpClient) { }
 
+
+  headers = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+    withCredentials: true,
+   }
+
   GetAsync(Id: string): Observable<Client>{
     return this.http.get<Client>(`${this.apiUrl}/${Id}`)
   }
-  postData(info) : Observable<Client>{
-    return this.http.post<Client>(`${this.apiUrl}`,info);
+  postData(model: Client) : Observable<Client>{
+    return this.http.post<Client>(this.apiUrl + 'Add', model, this.headers).pipe();
   }
   putData(Id: string, value:any):  Observable<Client>{
     return this.http.put<Client>(`${this.apiUrl}/${Id}`,value);

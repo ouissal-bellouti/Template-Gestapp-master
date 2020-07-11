@@ -19,18 +19,33 @@ export class AddClientComponent implements OnInit {
 
   listData:FormGroup;
   clientForm:FormGroup;
-  client:Client
+  client:Client;
+  messageValidate= {
+    nom: {
+      required: 'Ce champs est requis'
+    },
+    email: {
+      required: 'Ce champs est requis'
+    },
+    adresse: {
+      required: 'Ce champs est requis'
+    },
+    prenom: {
+      required: 'Ce champs est requis'
+    }
+
+  }
 
   constructor(public api: ClientService ,
     public fb: FormBuilder,
     public toastr: ToastrService,
-    private matDialog: MatDialog,
     private router : Router,@Inject(MAT_DIALOG_DATA)
     public data,
     public dialogRef:MatDialogRef<AddClientComponent>
      ) { }
 
   ngOnInit() {
+    console.log('Addsomthing')
     if (this.api.choixmenu==='A')
      {
       this.client = {
@@ -50,15 +65,17 @@ export class AddClientComponent implements OnInit {
       prenom: ['', [Validators.required, Validators]],
       ville: '',
       telephone: '',
-      codePostal:null
+      codePostal:''
     });
   }
 
-onSubmit() {
-
+onSubmit(value) {
+  console.log(value)
+  console.log(this.clientForm.value.telephone)
   if (this.api.choixmenu === 'A')
   {
     this.addData();
+
   }
   else
   {
@@ -69,7 +86,7 @@ onSubmit() {
 
 
 addData() {
-
+  if(this.clientForm.valid) {
     this.client.nom = this.clientForm.value.nom;
     this.client.prenom = this.clientForm.value.prenom;
     this.client.telephone= this.clientForm.value.telephone;
@@ -78,6 +95,10 @@ addData() {
     this.client.email = this.clientForm.value.email;
     this.client.codePostal = this.clientForm.value.codepostal;
 
+    console.log(this.client)
+    console.log(this.clientForm)
+
+
     this.api.postData(this.client).subscribe( data => {
       this.dialogRef.close();
 
@@ -85,7 +106,14 @@ addData() {
         response =>{this.api.listData = response;}
        );
       this.router.navigate(['/clients']);
-    });
+  });
+
+
+}
+
+else {
+  console.log(this.clientForm)
+}
 
 
   // this.api.postData(this.api.clientForm.value).
